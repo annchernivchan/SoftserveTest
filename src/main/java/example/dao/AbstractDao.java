@@ -1,12 +1,10 @@
 package example.dao;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 
 public abstract class AbstractDao<T extends Serializable> implements InterfaceDao<T> {
 
@@ -20,12 +18,12 @@ public abstract class AbstractDao<T extends Serializable> implements InterfaceDa
         this.entityType = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    public T findOne(String id) {
+    public T getById(String id) {
         return entityManager.find(entityType, id);
     }
 
     @SuppressWarnings("unchecked")
-    public List<T> findAll() {
+    public List<T> getAll() {
         return entityManager
                 .createQuery("from " + entityType.getName())
                 .getResultList();
@@ -44,7 +42,7 @@ public abstract class AbstractDao<T extends Serializable> implements InterfaceDa
     }
 
     public void deleteById(String entityId) {
-        T entity = findOne(entityId);
+        T entity = getById(entityId);
         delete(entity);
     }
 
