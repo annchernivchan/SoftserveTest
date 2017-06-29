@@ -4,7 +4,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
+
+/**
+ * This class represents entity @Student
+ * on subject area "University"
+ */
 
 @Entity
 @Table(name = "students")
@@ -25,7 +31,7 @@ public class Student implements Serializable {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
-    private Set<Course> courses;
+    private List<Course> courses;
 
     @Column(name = "active")
     private Boolean active;
@@ -49,11 +55,11 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 

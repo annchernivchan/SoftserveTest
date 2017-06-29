@@ -12,6 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class provides work with {@code Student} entity
+ * on Data Access Object (DAO) layer
+ * */
+
 @Service
 @Transactional(readOnly = true)
 public class StudentServiceImpl implements StudentService {
@@ -21,12 +26,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Transactional
     public void add(StudentDto studentDto) {
-//        studentDao.create(student);
+        studentDao.create(StudentMapper.MAPPER.fromDto(studentDto));
     }
 
     @Transactional
     public void update(StudentDto studentDto) {
+        studentDao.update(StudentMapper.MAPPER.fromDto(studentDto));
+    }
 
+    public StudentDto getById(String studentId) {
+        return StudentMapper.MAPPER.toDto(studentDao.getById(studentId));
     }
 
     public List<StudentDto> getAll() {

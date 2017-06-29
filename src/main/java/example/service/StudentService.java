@@ -9,6 +9,7 @@ public interface StudentService {
 
     void add(StudentDto studentDto);
     void update(StudentDto studentDto);
+    StudentDto getById(String studentId);
     List<StudentDto> getAll();
 
 }

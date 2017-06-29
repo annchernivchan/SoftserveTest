@@ -4,7 +4,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
+
+/**
+ * This class represents entity @Course
+ * on subject area "University"
+ */
 
 @Entity
 @Table(name = "courses")
@@ -20,12 +25,16 @@ public class Course implements Serializable {
     private String name;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER)
-    private Set<Student> students;
+    private List<Student> students;
 
     @Column(name = "active")
     private Boolean active;
 
     public Course() {
+    }
+
+    public Course(String name) {
+        this.name = name;
     }
 
     public String getId() {
@@ -44,11 +53,11 @@ public class Course implements Serializable {
         this.name = name;
     }
 
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 

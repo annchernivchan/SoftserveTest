@@ -1,11 +1,19 @@
 package example.dto;
 
+/**
+ * This class represents Data Transfer Object of @Course entity
+ */
+
 public class CourseDto {
 
     private String id;
     private String name;
 
     public CourseDto() {
+    }
+
+    public CourseDto(String name) {
+        this.name = name;
     }
 
     public String getId() {

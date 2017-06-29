@@ -1,12 +1,17 @@
 package example.dto;
 
-import java.util.Set;
+import java.util.List;
+
+/**
+ * This class represents Data Transfer Object of @Student entity
+ */
+
 
 public class StudentDto {
 
     private String id;
     private String name;
-    private Set<CourseDto> courses;
+    private List<CourseDto> courses;
 
     public StudentDto() {
     }
@@ -27,11 +32,11 @@ public class StudentDto {
         this.name = name;
     }
 
-    public Set<CourseDto> getCourses() {
+    public List<CourseDto> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<CourseDto> courses) {
+    public void setCourses(List<CourseDto> courses) {
         this.courses = courses;
     }
 }
